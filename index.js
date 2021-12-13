@@ -47,6 +47,8 @@ app.get("/get-files", function (req, res) {
   );
 });
 
-app.listen(8000, function () {
+const port = process.env.PORT || 8000;
+
+app.listen(port, function () {
   console.log("Example app listening on port 8000.");
 });
