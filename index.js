@@ -12,7 +12,6 @@ const cloudinary = require("cloudinary");
 require("dotenv").config();
 
 const { GoogleSpreadsheet } = require("google-spreadsheet");
-
 let doc = "";
 
 async function accessSpreadsheet() {
@@ -70,6 +69,7 @@ app.post("/add-message", async function (req, res) {
   await accessSpreadsheet();
   const sheet = doc.sheetsByIndex[0];
   let data = req.body;
+  data.date = new Date();
   const result = sheet.addRow(data);
   res.status(200).send({ response: result });
 });
